@@ -8,19 +8,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bryuhoveckiy.dokotlinstaff.R
 import com.bryuhoveckiy.dokotlinstaff.databinding.ItemBookBinding
 
-class BookAdapter(var data: MutableList<Book>, private val listener: OnBookListener) :
+class BookAdapter(private var data: MutableList<Book>, private val listener: OnBookListener) :
     RecyclerView.Adapter<BookAdapter.ViewHolder>() {
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemBookBinding.bind(itemView)
+        val root = binding.root
 
-        init {
-
-        }
-
-        //val f=itemView.setOnClickListener()
         fun bind(book: Book) {
+            // root.setOnClickListener{ listener.onBookClick(book) }
             with(binding) {
                 tvName.text = book.title
                 tvSite.text = book.site
@@ -34,8 +31,11 @@ class BookAdapter(var data: MutableList<Book>, private val listener: OnBookListe
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_book, parent, false)
+        val binding = ItemBookBinding
+            .inflate(LayoutInflater.from(parent.context), parent, false)
+        val view = binding.root
+//        val view = LayoutInflater.from(parent.context)
+//            .inflate(R.layout.item_book, parent, false)
         return ViewHolder(view)
     }
 

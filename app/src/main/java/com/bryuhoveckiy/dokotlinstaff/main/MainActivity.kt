@@ -1,13 +1,11 @@
 package com.bryuhoveckiy.dokotlinstaff.main
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bryuhoveckiy.dokotlinstaff.R
 import com.bryuhoveckiy.dokotlinstaff.databinding.ActivityMainBinding
-import timber.log.Timber
 
 class MainActivity : AppCompatActivity(),
     BookAdapter.OnBookListener {
