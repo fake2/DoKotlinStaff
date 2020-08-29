@@ -3,12 +3,20 @@ package com.bryuhoveckiy.dokotlinstaff.main
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bryuhoveckiy.dokotlinstaff.databinding.ActivityMainBinding
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity(),
     BookAdapter.OnBookListener {
+
+    private val mainViewModel: MainViewModel by viewModels {
+        SavedStateViewModelFactory(application, this)
+    }
+
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +37,10 @@ class MainActivity : AppCompatActivity(),
         binding.btnOne.setOnClickListener { view ->
             adapter.dispatch(Book.data.sortedBy { it.title })
         }
+
+
+        mainViewModel.saveName("my name")
+        Timber.d("my name from view model: %s", mainViewModel.getName())
     }
 
     override fun onBookClick(book: Book) {
