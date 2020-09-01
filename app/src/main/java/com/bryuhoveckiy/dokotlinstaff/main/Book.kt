@@ -5,7 +5,7 @@ import java.util.*
 class Book(
     val id: String = UUID.randomUUID().toString(),
     val title: String,
-    val site: String,
+    val site: String="",
     private val activityName: String
 ) {
     val packageName: String
