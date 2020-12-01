@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(),
         val adapter = BookAdapter(Book.data, this)
         binding.recyclerView.adapter = adapter
 
-        binding.btnOne.setOnClickListener { view ->
+        binding.btnOne.setOnClickListener { _ ->
             adapter.dispatch(Book.data.sortedBy { it.title })
         }
 
