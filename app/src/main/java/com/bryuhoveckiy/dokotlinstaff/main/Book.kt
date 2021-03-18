@@ -24,13 +24,6 @@ class Book(
                         activityName = "foo.FooActivity"
                     )
                 )
-                books.add(
-                    Book(
-                        title = "ABC",
-                        site = "bar",
-                        activityName = "foo.FooActivity"
-                    )
-                )
                 return books
             }
     }
